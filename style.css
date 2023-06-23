@@ -1,0 +1,898 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+
+
+*{                            /*Tamaño pantalla inicio*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins',sans-serif;
+}
+
+:root{                      /*Color y fondo pantalla inicio*/
+    --color-fondo:#ffff;
+    --color-texto:#ffff;
+    --color-principal:#754ef9;
+    --color-blanco:#ffff;
+    --color-sombra:rgb(0,0,0,.2)
+}
+
+.modooscuro{
+    --color-fondo: #707073;
+    --color-texto: white;
+    --color-sombra: rgb(0,0,0, .7);
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+body{
+    background: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.header{                       /* Color y letras del barra cabecera*/
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 7%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    transition: .5s;
+}
+
+.header.sticky{
+    background: var(--color-fondo);
+    box-shadow: 0 .1rem 1rem var(--color-sombra);
+    /*overflow: hidden;*/
+}
+
+.logo{                      
+    font-size: 2.5rem;
+    color: var(--color-principal);
+    font-weight: 600;
+    cursor: default;
+    margin-right: auto;
+}
+
+.Menu a{                    /* Color y letras del barra inicio*/
+    position: relative;
+    font-size: 1.7rem;
+    color: var(--color-blanco);
+    font-weight: 500;
+    margin-right: 2.5rem;
+    transition: .3s ease-in-out all;
+}
+
+.Menu a:hover{
+    color: black;
+}
+
+
+.header.sticky .Menu a{
+    color: black; 
+}
+
+.header.sticky .Menu a .activar{
+    color: var(--color-principal);
+
+}
+
+
+.Menu a.activar::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: .2rem;
+    background: var(--color-blanco);
+}
+
+.header.sticky .Menu a::before{
+    background: var(--color-principal);
+    opacity: .7;  
+
+}
+
+#icono-noche{           /*Color Icono LUNA de la barra inicio*/
+    font-size: 2.4rem;
+    color: var(--color-blanco);
+    cursor: pointer;
+}
+
+#icono-menu{
+    font-size: 3.6rem;
+    color: black;
+    display: none;
+}
+
+.header.sticky #icono-noche{
+    color: var(--color-principal);
+    opacity: .9;
+}
+
+section{                        /*Color, tamaño y letras del barra inicio*/      
+    min-height: 100vh;
+    padding: 10rem 7% 2rem;
+}
+.inicio{                            /*posición Etiqueta Bienvenido, mi nombre y logos*/
+    display: flex;
+    align-items: center;
+}
+
+.inicio .content-inicio{
+    max-width: 44rem;
+}
+
+.content-inicio h3{      /*Etiqueta Bienvenido*/
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: .3;
+    color:black ;
+}
+.content-inicio h1{      /*Etiqueta Mi Nombre es...*/
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: .5rem;
+}
+
+.content-inicio p{
+    font-size: 1.6rem;
+    color: black;
+}
+
+.content-inicio .iconos_redes a{       /*Botones iconos redes sociales*/
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    border: .2rem solid var(--color-principal);
+    border-radius: 50%;
+    box-shadow: 0 .2rem .5rem var(--color-sombra);
+    font-size: 2rem;
+    color: var(--color-principal);
+    margin: 2.5rem 1.5rem 3rem 0;
+}
+
+.content-inicio .iconos_redes a:hover{
+    background: var(--color-principal);
+    color: var(--color-blanco);
+}
+.btn{                               /*Botón descargar currículum*/
+    display: inline-block;
+    padding: 1.2rem 2.8rem;
+    background: var(--color-principal);
+    border-radius: .6rem;
+    box-shadow: 0 .2rem .5rem var(--color-sombra);
+    font-size: 1.6rem;
+    color: var(--color-blanco);
+    letter-spacing: .1rem;
+    font-weight: 600;
+    border: .2rem solid transparent;
+    transition: .5s ease ;
+}
+
+.btn:hover{                        /*Sombreado Botón descargar currìculum*/
+    background: transparent;
+    color: var(--color-principal);
+    border-color: var(--color-principal);
+}
+
+.inicio .containerprofesion{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 770px;
+    height: 770px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.inicio .containerprofesion .cajaprofesion{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 768px;
+    height: 768px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotar_profesiones 10s ease-in-out infinite;
+}
+
+@keyframes rotar_profesiones{
+    0%,20%{
+        transform: rotate(0deg);
+    }
+    25%,45%{
+        transform: rotate(-90deg);
+    }
+    50%,70%{
+        transform: rotate(-180deg);
+    }
+    75%,95%{
+        transform: rotate(-270deg);
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+
+.inicio .cajaprofesion .profesion{
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: var(--color-principal);
+    transform: rotate(calc(360deg/4*var(--i)));
+    transform-origin: 384px;
+    background: var(--color-fondo);
+    padding: 13px 0;
+}
+
+.inicio .cajaprofesion .profesion:nth-child(1)i{
+    margin-right: 15px;
+}
+.inicio .cajaprofesion .profesion:nth-child(2),
+.inicio .cajaprofesion .profesion:nth-child(4){
+    margin-bottom: 20px;
+}
+
+.inicio .profesion i{
+    font-size: 3.8rem;
+}
+
+.inicio .profesion h3{
+    font-size: 2.2rem;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.inicio .cajaprofesion .circle{
+    width: 560px;
+    height: 560px;
+    border: 3px solid var(--color-principal);
+    border-radius: 50%;
+}
+
+.inicio .containerprofesion .overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 384px solid var(--color-principal);
+    border-right: 384px solid var(--color-principal);
+    border-bottom: 384px solid var(--color-principal); 
+    border-left: 384px solid transparent;
+}
+
+span{
+    color:var(--color-principal);
+}
+
+.acerca{
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: 0;
+}
+
+.imagenacerca img{
+    width: 40vw;
+    padding: 5px;
+}
+
+.cabecera{
+    font-size: 4.5rem;
+    text-align: center;
+    color: black; 
+}
+
+.contentacerca h2{
+    text-align: left;
+    line-height: 2.5;
+    color: black;
+}
+
+.contentacerca h3{
+    font-size: 2rem;
+    color: black;   
+}
+
+.contentacerca p{
+    font-size: 1.6rem;
+    margin: 2rem 0 3rem;
+    color: black;
+}
+
+.servicios{
+    min-height: auto;
+    padding-bottom:  7rem;
+}
+
+.servicios h2{
+    margin-bottom: 5rem;
+    padding: 3rem;
+}
+
+.servicios .container_servicios{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.container_servicios .caja_servicios{
+    flex: 1 1 30rem;
+    background: cadetblue;
+    padding: 3rem 2rem 4rem;
+    border-radius: 2rem;
+    box-shadow: 0 .1rem .5rem var(--color-sombra);
+    text-align: center;
+    border-top: .6rem solid rgb(59, 220, 142);
+    border-bottom: .6rem solid rgb(59, 220, 142);
+    transition: .5s ease;
+}
+
+.container_servicios .caja_servicios:hover{
+    box-shadow: 0 .1rem 2rem var(--color-sombra);
+    transform: scale(1.02);
+}
+
+.caja_servicios i{
+    font-size: 7rem;
+    color: rgb(92, 91, 95);
+}
+
+.caja_servicios h3{
+    font-size: 2.6rem;
+    color: black;
+    transition: .5s ease;
+}
+
+.caja_servicios:hover h3{
+    color: rgb(180, 167, 237);
+}
+
+.caja_servicios p{
+    font-size: 1.4rem;
+    margin: 1rem 0 3rem;
+    color: black;
+}
+
+.portafolio{
+    padding-bottom: 10rem;
+}
+
+.portafolio h2{  /*Títulos Desarrollador WEB, JAVA, PYTHON*/
+    margin-bottom: 6rem;
+    color:black
+}
+
+.portafolio .container_portafolio{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.container_portafolio .caja_portafolio{  /*Estiliza la caja de portafolio, se expande y sombrea*/
+    position: relative;
+    display: flex;
+    border-radius: 1.8rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .1);
+    overflow: hidden;
+}
+
+.caja_portafolio img{    /*Estiliza la imagen de portafolio*/
+    width: 100%;
+    transition: .5s ease;
+}
+
+.caja_portafolio:hover img{ /*Permite que la imagen se haga traslúcida*/
+    transform: scale(1.1);
+}
+
+.caja_portafolio .layer_portafolio{  /*caja de texto que está sobre las imágenes de portafolio*/
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgb(0,0,0,.1), var(--color-principal));
+    color: rgb(240, 237, 234);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 4rem;
+    justify-content: center;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.caja_portafolio:hover .layer_portafolio{
+    opacity: 1;
+}
+
+.layer_portafolio h4{
+    font-size: 2.6rem;
+}
+
+.layer_portafolio p{
+    font-size: 1.3rem;
+    margin: .2rem 0 1rem;
+}
+
+.layer_portafolio a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.2rem;
+    height: 4.2rem;
+    background: whitesmoke;
+    border-radius: 50%;
+}
+
+.layer_portafolio a i{
+    font-size: 3rem;
+    color: darkcyan;
+}
+
+.container_referencia{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 5rem 1rem;
+}
+
+.container_referencia .referencia_principal{
+    position: relative;
+    max-width: 90rem;
+    width: 100%;
+    padding: 5rem;
+}
+
+.referencia_principal .caja_referencia{
+    background: var(--color-principal);
+    padding: 1rem;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.content_referencia .slider_referencia{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: var(--color-fondo);
+    border-radius: 2rem;
+    box-shadow: 0 .1rem .5rem var(--color-sombra);
+    padding: 3rem 5rem;
+    border-top: .8rem solid var(--color-principal);
+    border-bottom: .8rem solid var(--color-principal);
+}
+
+.slider_referencia img{   /*Imágen referencias*/
+    width: 18rem;
+    height: 18rem;
+    object-fit: cover;
+    border-radius: 50%;  /*le da forma redonda a la imagen*/
+    border: .2rem solid var(--color-fondo);
+    outline: .3rem solid rgb(75, 75, 216);
+}
+
+.slider_referencia h3{
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    color: black;
+}
+
+.slider_referencia p{
+    font-size: 1.5rem;
+    text-align: center;
+    color: black;
+}
+
+.caja_referencia .swiper-button-next,
+.caja_referencia .swiper-button-prev{
+    color: var(--color-principal);
+}
+
+.caja_referencia .swiper-button-next{
+    right: 0;
+}
+
+.caja_referencia .swiper-button-prev{
+    left: 0;
+}
+
+.caja_referencia .swiper-pagination{
+    background: 0, 0, 0, .8;
+}
+
+.caja_referencia .swiper-pagination-bullet-active{
+    background: var(--color-principal);
+}
+
+/*Contacto*/
+
+.contacto h2{
+    margin-bottom: 3rem;
+}
+.contacto form{
+    max-width: 70rem;
+    margin: 1rem auto;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contacto form .formulario{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contacto form .formulario input,
+.contacto form textarea{
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: black;
+    background: var(--color-fondo);
+    border-radius: .8rem;
+    margin: .7rem 0;
+    box-shadow: 0 .1rem .5rem var(--color-sombra);
+}
+
+.contacto form textarea{
+    resize: none;
+}
+
+.contacto form .formulario input{
+    width: 49%;
+}
+
+.contacto form .btn{
+    margin-top: 2rem;
+    cursor: pointer;
+}
+/*Footer*/
+.pie_pagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 7%;
+    background: var(--color-principal);
+}
+
+.texto_pie p{
+    font-size: 1.6rem;
+    color: rgb(235, 235, 243);
+}
+
+.icono_pie a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    background:rgb(92, 91, 95);
+    border-radius: .8rem;
+    border: .2rem solid var(--color-principal);
+    outline: .2rem solid transparent;
+    transition: .5s ease;
+}
+
+.icono_pie a:hover{
+    outline-color: whitesmoke;
+}
+
+.icono_pie a i{
+    font-size: 2.4rem;
+    color: gray;
+}
+/*Style Dispositivos móviles*/
+@media (max-width:1200px) {
+    html{
+        font-size: 55%; 
+    }
+    .inicio .containerprofesion{
+        height: 85.8rem;
+    }
+
+    .inicio .containerprofesion .cajaprofesion{
+        right: -12rem;
+        height: 85.5rem;
+    }
+    .inicio .containerprofesion .overlay{
+        right: -9rem;
+    }
+}
+
+@media (max-width:1024px) {
+    .header{
+        padding: 2rem 3%;
+    }
+    section{
+        padding: 10rem 3% 2rem;
+    }
+    .inicio.containerprofesion .cajaprofesion{
+        right: -22rem;
+    }
+    .inicio.containerprofesion .overlay{
+        right: -15rem;
+    }
+}
+
+@media (max-width:991px){
+    .menu a:nth-child(1),
+    .menu a:nth-child(2){
+        color: var(--color-principal);
+    }
+    .menu a.activar::before{
+        background: var(--color-principal);
+        opacity: .7;
+    }
+
+    .inicio .content-inicio{
+        max-width: 50rem;
+    }
+    .inicio .containerprofesion .cajaprofesion{
+        right: -45rem;
+    }
+
+    .inicio.containerprofesion .overlay{
+        right: -39.5rem;
+    }
+    .servicios,
+    .portafolio{
+        padding-bottom: 7rem;
+    }
+    .contacto{
+        min-height: auto;
+    }
+    .pie_pagina{
+        padding: 2rem 3%;
+    }
+}
+
+@media (max-width: 768px){
+    #icono-menu{
+        display:block;
+    }
+
+    #icono-noche{
+        position: absolute;
+        right: 7rem;
+        font-size: 2.6rem;
+        color: black;
+        margin-bottom: .1rem;
+    }
+
+    .Menu{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 3%;
+        background: var(--color-fondo);
+        border-top: 0 .1rem solid rgb(0,0,0,.2);
+        box-shadow: 0 .5rem 1rem rgb(0,0,0,.1);
+        display: none;
+    }
+
+    .Menu.activar{
+        display: block;
+    }
+
+    .Menu a{
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        color: black;
+    }
+
+    .Menu a:nth-child(1),
+    .Menu a:nth-child(2){
+        color:black;        
+    }
+    .Menu a.activar{
+        color: var(--color-principal)
+    }
+
+    .Menu a::before{
+        display: none;
+    }
+    .inicio{
+        padding: 0 3% 23rem;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .content-inicio h3{
+        font-size: 2.6rem;
+    }
+    .content-inicio h1{
+        font-size: 5rem;
+    }
+
+    .content-inicio .iconos_redes a{
+        margin: 2.5rem .75rem 3rem;
+    }
+
+    .inicio .containerprofesion{
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .inicio .containerprofesion .cajaprofesion{
+        position: fixed;
+        top: 60%;
+        left: 0;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .inicio .cajaprofesion .profesion{
+        padding: 0 13px;
+        left: auto;
+        transform-origin: 0;
+    }
+
+    .inicio .cajaprofesion .profesion:nth-child(1){
+        transform: rotate(-90deg) translate(-120px,-210px);
+    }
+
+    .inicio .cajaprofesion .profesion:nth-child(1) i{
+        margin-right: 0;
+    }
+    .inicio .cajaprofesion .profesion:nth-child(2){
+       transform: rotate(0deg) translate(0px,-335px);
+    }
+    .inicio .cajaprofesion .profesion:nth-child(3){
+        transform: rotate(90deg) translate(-115px,-450px);
+    }
+    .inicio .cajaprofesion .profesion:nth-child(4){
+        transform: rotate(180deg) translate(-220px,-335px);
+    }
+
+    .inicio .cajaprofesion .circle{
+        position: fixed;
+        width: 670px;
+        height: 670px;
+        z-index: -1;
+    }
+
+    .inicio .containerprofesion .overlay{
+        position: fixed;
+        top: 70rem;
+        left: 50%;
+        right: 0;
+        transform: rotate(90deg) translate(-50%, 50%) scaley(3);
+        border-width: 23.9rem;
+    }
+    .acerca{
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .acerca .contentacerca h2{
+        text-align: center;
+    }
+
+    .imagenacerca img{
+        width: 70vw;
+        margin-top: -2rem;
+    }
+
+    .servicios h2,
+    .portafolio h2{
+        margin-bottom: 3rem;
+    }
+
+    .portafolio .container_portafolio{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container_referencia .referencia_principal{
+        padding: 5rem 0;
+    }
+
+    .content_referencia .slider_referencia{
+        padding: 3rem 2rem;
+    }
+
+    .caja_referencia .swiper-button-next,
+    .caja_referencia .swiper-button-prev{
+        display: none;
+    }
+}
+
+@media (max-width: 617px){
+    .portafolio .container_portafolio{
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 450px){
+    html{
+        font-size: 50%;
+    }
+
+    #icono-noche{
+        right: 6rem;
+    }
+
+    .inicio{
+        padding: 0 3% 30rem;
+    }
+
+    .inicio .cajaprofesion .profesion:nth-child(1){
+        transform: rotate(-90deg) translate(-110px,-220px);
+    }
+    .inicio .cajaprofesion .profesion:nth-child(2){
+        transform: rotate(0deg) translate(5px,-335px);
+    }    
+        .inicio .cajaprofesion .profesion:nth-child(3){
+        transform: rotate(90deg) translate(-105px,-440px);
+    }
+        .inicio .cajaprofesion .profesion:nth-child(4){
+        transform: rotate(180deg) translate(-210px,-335px)
+    }
+
+    .contacto form .formulario input{
+        width: 100%;
+    }
+}
+
+@media (max-width: 365px){
+    .imagenacerca img{
+        width: 90vw;
+    }
+    .pie_pagina{
+        flex-direction: column-reverse;
+    }
+
+    .pie_pagina p{
+        text-align: center;
+        margin-top: 2rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
